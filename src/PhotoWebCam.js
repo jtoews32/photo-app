@@ -55,8 +55,7 @@ function PhotoWebCam() {
             <h2>Application Verification of Size Requirements</h2>
 
             <h5><i>Verification Passed</i></h5>
-            <br />
-            <img src={imgSrc} alt="Captured" />
+
 
             <br /> <br />
 
@@ -89,6 +88,8 @@ function PhotoWebCam() {
 
         <span aria-busy="true">Waiting for Upload to Complete</span>
 
+            <br />
+            <img src={imgSrc} alt="Captured" />
 
       </div>}
 
