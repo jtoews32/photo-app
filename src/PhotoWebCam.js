@@ -10,23 +10,18 @@ function PhotoWebCam() {
 
   const takePhoto = (e) => {
     e.preventDefault();
-    console.log("Starting webcam...");
-
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
-
     setPipeline({ ...pipeline, step: 1 });
   };
 
   const back = (e) => {
     e.preventDefault();
-    console.log("Going back to webcam...");
     setPipeline({ ...pipeline, step: pipeline.step - 1 });
   };
 
   const uploadPhoto = (e) => {
     e.preventDefault();
-    console.log("Uploading photo...");
     setPipeline({ ...pipeline, step: 2 });
   };
 
@@ -50,31 +45,20 @@ function PhotoWebCam() {
         {imgSrc && (
           <div>
             <h2>Application Verification of Size Requirements</h2>
-
             <h5><i>Verification Passed</i></h5>
-
-
             <br /> <br />
-
-
             <div className="grid" style={buttonGrid}>
               <div> <button className="   outline" onClick={(e) => back(e)} >Back</button></div>
               <div> <button className="   outline" onClick={(e) => uploadPhoto(e)} >Upload</button></div>
 
             </div>
-
             <br /> <br />
-
-
           </div>)}
       </div>}
 
       {pipeline.step === 2 && <div>
         <h2>Upload and Check</h2>
-
         <span aria-busy="true">Waiting for Upload to Complete</span>
-
-
       </div>}
 
 
