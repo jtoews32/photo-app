@@ -15,19 +15,19 @@ function PhotoWebCam() {
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
 
-    setPipeline({ ...pipeline, state: 1 });
+    setPipeline({ ...pipeline, step: 1 });
   };
 
   const back = (e) => {
     e.preventDefault();
     console.log("Going back to webcam...");
-    setPipeline({ ...pipeline, state: pipeline.state - 1 });
+    setPipeline({ ...pipeline, step: pipeline.step - 1 });
   };
 
   const uploadPhoto = (e) => {
     e.preventDefault();
     console.log("Uploading photo...");
-    setPipeline({ ...pipeline, state: 2 });
+    setPipeline({ ...pipeline, step: 2 });
   };
 
 
@@ -40,7 +40,7 @@ function PhotoWebCam() {
 
   return (
     <div className="container">
-      {pipeline.state === 0 && <div>
+      {pipeline.step === 0 && <div>
         <h2>Capture Photo Using Interface</h2>
         <Webcam height={600} width={600} ref={webcamRef} />
         <br />
@@ -48,7 +48,7 @@ function PhotoWebCam() {
         <br /> <br />
       </div>}
 
-      {pipeline.state === 1 && <div>
+      {pipeline.step === 1 && <div>
 
         {imgSrc && (
           <div>
@@ -75,7 +75,7 @@ function PhotoWebCam() {
           </div>)}
       </div>}
 
-      {pipeline.state === 2 && <div>
+      {pipeline.step === 2 && <div>
         <h2>Upload and Check</h2>
 
         <span aria-busy="true">Waiting for Upload to Complete</span>
@@ -84,7 +84,7 @@ function PhotoWebCam() {
       </div>}
 
 
-      {pipeline.state === 3 && <div>
+      {pipeline.step === 3 && <div>
         <h2>Upload Presents Image</h2>
 
         <span aria-busy="true">Waiting for Upload to Complete</span>
