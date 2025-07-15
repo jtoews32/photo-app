@@ -30,13 +30,10 @@ function PhotoWebCam() {
     setPipeline({ ...pipeline, step: 2 });
   };
 
-
   const buttonGrid = {
-     minWidth: "10em",
-     maxWidth: "10em"
+    minWidth: "10em",
+    maxWidth: "10em"
   };
-
- 
 
   return (
     <div className="container">
@@ -66,8 +63,6 @@ function PhotoWebCam() {
 
             </div>
 
-
-
             <br /> <br />
 
 
@@ -88,13 +83,10 @@ function PhotoWebCam() {
 
         <span aria-busy="true">Waiting for Upload to Complete</span>
 
-            <br />
-            <img src={imgSrc} alt="Captured" />
+        <br />
+        <img src={imgSrc} alt="Captured" />
 
       </div>}
-
-
-
 
     </div>
   );
