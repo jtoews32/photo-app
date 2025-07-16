@@ -35,10 +35,9 @@ function PhotoWebCam() {
   };
 
   const goToStartScreen = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     setPipeline({ ...pipeline, step: 0 });
   };
-
 
   const viewUpload = (e) => {
     e.preventDefault();
@@ -49,7 +48,6 @@ function PhotoWebCam() {
   const uploadPhoto = (e) => {
     e.preventDefault();
     setPipeline({ ...pipeline, step: 2 });
-
 
     axios.post('http://127.0.0.1:8080/upload', {
       name: pipeline.name,
@@ -67,12 +65,12 @@ function PhotoWebCam() {
             console.log(JSON.stringify(response, null, 2));
 
             setPipeline({ ...pipeline, step: 3 });
- 
-            setImgSrc(response.data.payload );
- 
+
+            setImgSrc(response.data.payload);
+
           })
           .catch((error) => {
- 
+
             console.error("Error downloading image:", error);
             setPipeline({ ...pipeline, step: -1, error: error.message });
 
@@ -84,10 +82,6 @@ function PhotoWebCam() {
         setImgSrc(null);
 
       });
-
-
-
-    
   };
 
   const buttonGrid = {
@@ -98,11 +92,11 @@ function PhotoWebCam() {
   return (
     <div className="container">
       {pipeline.step === 0 && <div>
-        <h4>Take a Screen Capture</h4> 
+        <h4>Take a Screen Capture</h4>
         <Webcam height={600} width={600} ref={webcamRef} screenshotFormat='image/jpeg' />
         <br />
         <button className="  outline" onClick={(e) => takePhoto(e)} >Capture Photo</button>
-        <br /> 
+        <br />
       </div>}
 
       {pipeline.step === 1 && <div>
@@ -141,38 +135,29 @@ function PhotoWebCam() {
       {pipeline.step === -1 && <div>
         <h3>Something Went Wrong</h3>
         <span>{pipeline.error}</span>
- 
+
       </div>}
-
-
 
       {pipeline.step === 3 && <div>
         <h4>Upload Confirmation</h4>
 
-        {imgSrc == null &&  <span aria-busy="true">Waiting...</span> }
-     
-        {imgSrc &&  <div  ><i>Successful Upload</i><br />    <br /><button className="outline" onClick={(e) => viewUpload(e)} >View Uploaded Image </button>  </div> }
+        {imgSrc == null && <span aria-busy="true">Waiting...</span>}
 
-  
-
+        {imgSrc && <div  ><i>Successful Upload</i><br />    <br /><button className="outline" onClick={(e) => viewUpload(e)} >View Uploaded Image </button>  </div>}
       </div>}
 
       {pipeline.step === 4 && <div>
- 
 
-  
-    <h5> Your Upload </h5>
+        <h5> Your Upload </h5>
         {imgSrc && <img src={imgSrc} alt="Captured" />}
         <br /><br />
 
-              <span> Image Saved As {pipeline.name} </span>
+        <span> Image Saved As {pipeline.name} </span>
         <br />
 
-        <button className="outline" onClick={(e) => goToStartScreen(e)} > Take Another Capture </button> 
+        <button className="outline" onClick={(e) => goToStartScreen(e)} > Take Another Capture </button>
 
       </div>}
-
-
 
     </div>
   );
