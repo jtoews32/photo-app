@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
 
-    if (!localStorage?.getItem('name') || localStorage.getItem('name') == null) {
+    if (!localStorage?.getItem('name')) {
       const uniqueId = uuidv4();
       localStorage.setItem('name', uniqueId);
       setPipeline({ ...pipeline, name: uniqueId });
