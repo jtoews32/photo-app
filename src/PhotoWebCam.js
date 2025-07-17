@@ -131,7 +131,8 @@ function PhotoWebCam() {
       {pipeline.step === -1 && <div>
         <h3>Something Went Wrong</h3>
         <span>{pipeline.error}</span>
-
+        <br /><br />
+        <button className="secondary" onClick={(e) => goToStartScreen(e)} > Take Another Capture </button>
       </div>}
 
       {pipeline.step === 3 && <div>
