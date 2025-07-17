@@ -105,20 +105,16 @@ function PhotoWebCam() {
           <div>
             <h4>Photo Verification</h4>
             Image Source Size: {imgSrcSize} Bytes
-<br /><br />
+            <br /><br />
             {imgSrcSize > MAX_BYTE_CUT_OFF && <h5><i>Photo size verification FAILED due to image exceeding 1 MB</i></h5>}
             {imgSrcSize <= MAX_BYTE_CUT_OFF && <h5><i>Photo size verification PASSED due to image being less than 1 MB</i></h5>}
         
-
-
             <br /> <br />
             <div className="grid" style={buttonGrid}>
               <div> <button className="secondary" onClick={(e) => back(e)} >Back</button></div>
 
-
               {imgSrcSize <= MAX_BYTE_CUT_OFF && <div> <button className="outline primary" onClick={(e) => uploadPhoto(e)} >Upload</button></div>}
               {imgSrcSize > MAX_BYTE_CUT_OFF && <div> <button className="outline primary" disabled>Upload</button></div>}
-
 
             </div>
             <br /> <br />

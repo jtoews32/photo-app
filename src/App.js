@@ -23,18 +23,11 @@ function App() {
   document.documentElement.setAttribute('data-theme', theme);
   }, []);
 
-
-        
-
- 
-
   return (
     <div  > 
       <main className="container">
         <center>
           <h1>Photo App</h1>
-
-
           <br />
           <PhotoWebCam />
         </center>
