@@ -2,6 +2,21 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Quick start 
+
+git clone https://github.com/jtoews32/photo-app
+
+cd photo-app
+
+npm install 
+
+npm start 
+
+
+http://localhost:3000/
+
+
+
 ## Versions
 
 node -v
