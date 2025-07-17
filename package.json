@@ -22,23 +22,15 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
+        
   "jest": {
 
-    "transform": {
-  "^.+\\.js$": "babel-jest",
-  "^.+\\.css$": ["jest-transform-css", { "modules": true }]
-},
-
-    "transformIgnorePatterns": [
-      "/node_modules/(?!(axios)/)",
-      "node_modules/(?!(@picocss/pico)/)"
-    ],
-    "moduleNameMapper": {
-     
-    }
+ 
+     "testEnvironment": "node"
+   
   },
   "eslintConfig": {
     "extends": [
