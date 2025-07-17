@@ -1,6 +1,4 @@
-// import { render, screen } from '@testing-library/react';
-// import App from './App';
 
-test('renders learn Photo App', () => {
+test('Testing placeholder for App. TODO. Fix picocss/pico and Jest issues', () => {
   expect(1).toBe(1);
 });
