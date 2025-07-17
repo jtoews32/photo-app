@@ -1,14 +1,14 @@
 import '@picocss/pico';
 import PhotoWebCam from "./PhotoWebCam";
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 
 import { Context } from './GlobalContext';
 import { v4 as uuidv4 } from 'uuid';
 
 function App() {
 
-
   const { pipeline, setPipeline } = useContext(Context);
+  const [theme, setTheme] = useState('dark');
 
   useEffect(() => {
 
@@ -20,12 +20,16 @@ function App() {
       setPipeline({ ...pipeline, name: localStorage.getItem('name') });
     }
 
-
+  document.documentElement.setAttribute('data-theme', theme);
   }, []);
 
 
+        
+
+ 
+
   return (
-    <div className="App" data-theme="light"> 
+    <div  > 
       <main className="container">
         <center>
           <h1>Photo App</h1>
@@ -38,7 +42,7 @@ function App() {
 
       <br /><br />
       <center>
-        Name ID: <span>{pipeline.name} </span>
+        Session ID/Filename: <span>{pipeline.name} </span>
       </center>
     </div>
   );

@@ -95,7 +95,7 @@ function PhotoWebCam() {
         <h4>Take a Screen Capture</h4>
         <Webcam height={600} width={600} ref={webcamRef} screenshotFormat='image/jpeg' />
         <br />
-        <button className="  outline" onClick={(e) => takePhoto(e)} >Capture Photo</button>
+        <button className="primary outline" onClick={(e) => takePhoto(e)} >Take Capture</button>
         <br />
       </div>}
 
@@ -104,20 +104,20 @@ function PhotoWebCam() {
         {imgSrc && (
           <div>
             <h4>Photo Verification</h4>
-
-
-            {imgSrcSize > MAX_BYTE_CUT_OFF && <h5><i>Photo Size Verification Failed. Image Exceeds 1 MB</i></h5>}
-            {imgSrcSize <= MAX_BYTE_CUT_OFF && <h5><i>Photo Size Verification Passed. Image Less Than 1 MB</i></h5>}
             Image Source Size: {imgSrcSize} Bytes
+<br /><br />
+            {imgSrcSize > MAX_BYTE_CUT_OFF && <h5><i>Photo size verification FAILED due to image exceeding 1 MB</i></h5>}
+            {imgSrcSize <= MAX_BYTE_CUT_OFF && <h5><i>Photo size verification PASSED due to image being less than 1 MB</i></h5>}
+        
 
 
             <br /> <br />
             <div className="grid" style={buttonGrid}>
-              <div> <button className="outline" onClick={(e) => back(e)} >Back</button></div>
+              <div> <button className="secondary" onClick={(e) => back(e)} >Back</button></div>
 
 
-              {imgSrcSize <= MAX_BYTE_CUT_OFF && <div> <button className="outline" onClick={(e) => uploadPhoto(e)} >Upload</button></div>}
-              {imgSrcSize > MAX_BYTE_CUT_OFF && <div> <button className="outline" disabled>Upload</button></div>}
+              {imgSrcSize <= MAX_BYTE_CUT_OFF && <div> <button className="outline primary" onClick={(e) => uploadPhoto(e)} >Upload</button></div>}
+              {imgSrcSize > MAX_BYTE_CUT_OFF && <div> <button className="outline primary" disabled>Upload</button></div>}
 
 
             </div>
@@ -126,7 +126,7 @@ function PhotoWebCam() {
       </div>}
 
       {pipeline.step === 2 && <div>
-        <h3>Upload and Check</h3>
+        <h3>Upload</h3>
 
         <span aria-busy="true">Waiting for Upload to Complete</span>  <br />
 
@@ -151,11 +151,11 @@ function PhotoWebCam() {
         <h5> Your Upload </h5>
         {imgSrc && <img src={imgSrc} alt="Captured" />}
         <br /><br />
+        
+        <span>Image Name {pipeline.name} </span>
+        <br />  <br />
 
-        <span> Image Saved As {pipeline.name} </span>
-        <br />
-
-        <button className="outline" onClick={(e) => goToStartScreen(e)} > Take Another Capture </button>
+        <button className="secondary" onClick={(e) => goToStartScreen(e)} > Take Another Capture </button>
 
       </div>}
 
