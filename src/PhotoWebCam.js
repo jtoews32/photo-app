@@ -25,6 +25,7 @@ function PhotoWebCam() {
 
     setImgSrc(imageSrc);
     setImgSrcSize(getBase64Size(imageSrc));
+
     setPipeline({ ...pipeline, step: 1 });
   };
 
@@ -43,6 +44,7 @@ function PhotoWebCam() {
     setPipeline({ ...pipeline, step: 4 });
   };
 
+
   const uploadPhoto = (e) => {
     e.preventDefault();
     setPipeline({ ...pipeline, step: 2 });
@@ -60,12 +62,18 @@ function PhotoWebCam() {
           payload: ""
         })
           .then((response) => {
+            console.log(JSON.stringify(response, null, 2));
+
             setPipeline({ ...pipeline, step: 3 });
+
             setImgSrc(response.data.payload);
 
           })
           .catch((error) => {
+
+            console.error("Error downloading image:", error);
             setPipeline({ ...pipeline, step: -1, error: error.message });
+
           });
 
       })
@@ -141,10 +149,12 @@ function PhotoWebCam() {
         <br /><br />
         
         <span>Image Name {pipeline.name} </span>
-        <br /><br />
+        <br />  <br />
 
         <button className="secondary" onClick={(e) => goToStartScreen(e)} > Take Another Capture </button>
+
       </div>}
+
     </div>
   );
 };
